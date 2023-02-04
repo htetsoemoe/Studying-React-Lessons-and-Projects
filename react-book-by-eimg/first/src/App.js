@@ -12,14 +12,27 @@ class Item extends React.Component {
 }
 
 class App extends React.Component {
+  state = {
+    items: [
+      { id: 1, name: "JavaScript Course", price: "free"},
+      { id: 2, name: "Spring Course", price: "free" },
+      { id: 3, name: "React Course", price: "free" },
+      { id: 3, name: "React Course", price: "free" },
+      { id: 5, name: "DevOp Course", price: "free" },
+    ]
+  };
+
   render() {
     return (
       <div>
         <h1>Hello React</h1>
         <ul>
-          <Item name="JavaScript Course" price="free" /> {/* Parent data to child */}
-          <Item name="Spring Course" price="free" />
-          <Item name="React Course" price="free"/>
+          {/* Parent to Child => using props */}
+          {
+            this.state.items.map(({name, price}) => {
+              return <Item name={name} price={price}/>
+            })
+          }
         </ul>
       </div>
     )
