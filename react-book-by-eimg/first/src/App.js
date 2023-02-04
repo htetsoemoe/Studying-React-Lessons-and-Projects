@@ -2,7 +2,12 @@ import React from 'react';
 
 class Item extends React.Component {
   render() {
-    return <li>Content from Item Component</li>
+    return (
+      <li>
+        {this.props.name},
+        {this.props.price}
+      </li>
+    )
   }
 }
 
@@ -12,15 +17,10 @@ class App extends React.Component {
       <div>
         <h1>Hello React</h1>
         <ul>
-          <li>JavaScript</li>
-          <li>ES6 Features</li>
-          <li>React</li>
+          <Item name="JavaScript Course" price="free" /> {/* Parent data to child */}
+          <Item name="Spring Course" price="free" />
+          <Item name="React Course" price="free"/>
         </ul>
-
-        <ol>
-          <Item />
-          <Item />
-        </ol>
       </div>
     )
   }
