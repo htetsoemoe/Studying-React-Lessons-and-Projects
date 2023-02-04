@@ -14,12 +14,21 @@ class Item extends React.Component {
 class App extends React.Component {
   state = {
     items: [
-      { id: 1, name: "JavaScript Course", price: "free"},
-      { id: 2, name: "Spring Course", price: "free" },
-      { id: 3, name: "React Course", price: "free" },
-      { id: 3, name: "React Course", price: "free" },
-      { id: 5, name: "DevOp Course", price: "free" },
+      { id: 1, name: "Java Basic", price: 300000},
+      { id: 2, name: "Full Stack Spring Framework Course", price: 300000 },
+      { id: 3, name: "React Course", price: 200000 },
     ]
+  };
+
+  add = () => {
+    let id = this.state.items.length + 1;
+
+    this.setState({
+      items: [
+        ...this.state.items,
+        {id, name: `Item ${id}`, price: 0.01 * id}
+      ]
+    });
   };
 
   render() {
@@ -29,14 +38,15 @@ class App extends React.Component {
         <ul>
           {/* Parent to Child => using props */}
           {
-            this.state.items.map(({name, price}) => {
-              return <Item name={name} price={price}/>
+            this.state.items.map(({id, name, price}) => {
+              return <Item key={id} name={name} price={price}/>
             })
           }
         </ul>
+        <button onClick={this.add}>Add Item</button>
       </div>
     )
-  }
+  };
 }
 
 export default App;
