@@ -11,6 +11,28 @@ class Item extends React.Component {
   }
 }
 
+class AddForm extends React.Component {
+  nameRef = React.createRef();
+  priceRef = React.createRef();
+
+  add = () => {
+    let name = this.nameRef.current.value;
+    let price = this.priceRef.current.value;
+
+    this.props.add(name, price);
+  }
+
+  render() {
+    return(
+       <div>
+        <input type="text" ref={this.nameRef}></input><br />
+        <input type="text" ref={this.priceRef}></input><br />
+        <button onClick={this.add}>Add Item</button>
+       </div>
+    )
+  }
+}
+
 class App extends React.Component {
   state = {
     items: [
@@ -19,15 +41,9 @@ class App extends React.Component {
       { id: 3, name: "React Course", price: 200000 },
     ]
   };
-
-  /** create Ref object */
-  nameRef = React.createRef();
-  priceRef = React.createRef();
   
-  add = () => {
+  add = (name, price) => {
     let id = this.state.items.length + 1;
-    let name = this.nameRef.current.value;
-    let price = this.priceRef.current.value;
 
     this.setState({
       items: [
@@ -49,9 +65,8 @@ class App extends React.Component {
             })
           }
         </ul>
-        <input type="text" ref={this.nameRef}></input><br />
-        <input type="text" ref={this.priceRef}></input><br />
-        <button onClick={this.add}>Add Item</button>
+        {/** props method from parent to child */}
+        <AddForm add = {this.add}/>
       </div>
     )
   };
