@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 | Introduction</title>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        // get the root element from the HTML
+        const rootElement = document.querySelector(".root");
+
+        // JSX Element
+        const header = (
+            <header>
+                <h1>Welcome to 30 Days of React</h1>
+                <h2>Getting Started React</h2>
+                <h3>JavaScript Library</h3>
+                <p>Developer Ko Htet</p>
+                <small>Feb 16, 2023</small>
+            </header>
+        );
+
+        const main = (
+            <main>
+                <p>Prerequisite to get started React.js</p>    
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </main>
+        );
+
+        const footer = (
+            <footer>
+                <p>Copyright 2023</p>    
+            </footer>
+        );
+
+        // JSX element, 'app' => a container or a parent
+        const app = (
+            <div>
+                {header}
+                {main}
+                {footer}
+            </div>
+        );
+
+        // we render the JSX element using the ReactDOM package
+        // ReactDOM has the render method and the render method takes two arguments
+        ReactDOM.render(app, rootElement);
+
+        // or
+        // ReactDOM.render([header, main, footer], rootElement);
+    </script>
+</body>
+
+</html>
